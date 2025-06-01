@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+    <div class="header">
+      <%= render 'layouts/navbar' %>
+    </div>  
+    <div class="info">
+      <div class="well">
+        <table class="table">
+         <h3 class="fw-bold" style="margin-left: 10px;">Assignment</h3>
+         <tbody>
+          <tr>
+            <td>ID: <%= @assignment.id %></td>
+          </tr>
+          <tr>
+            <td>Title: <%= @assignment.title %></td>
+          </tr>
+          <tr>
+            <td>Description: <%= @assignment.description %></td>
+          </tr>
+          <tr>
+            <td>Course: <%= @assignment.course.title %></td>
+          </tr>
+          <% unless current_user.student? %>
+          <tr>
+            <td>
+              <span><%= link_to "Back", :back, class:"btn btn-primary" %></span>
+              <span><%= link_to 'Edit', edit_assignment_path(@assignment), class:"btn btn-primary" %></span>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

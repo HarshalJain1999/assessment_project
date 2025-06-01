@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+      <div class="header">
+        <%= render 'layouts/navbar' %>
+      </div>  
+      <div class="info">
+        <% unless current_user.student? %>
+          <div style="text-align: right; margin-top: 35px; margin-bottom: 20px; margin-right: 30px;">
+            <%= link_to 'New Assignment', new_assignment_path, class:"btn btn-primary" %>
+          </div>
+        <% end %>
+        <div class="well">
+          <table class="table">
+          	<h3 class="fw-bold" style="margin-left: 10px;">Assignments</h3>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Course</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @assignments.each do |assignment| %>
+              <tr>
+                <td><%= assignment.id %></td>
+                <td><%= assignment.title %></td>
+                <td><%= assignment.description %></td>
+                <td><%= assignment.course.title %></td>
+                <td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= link_to 'View', assignment_path(assignment), class: "btn btn-primary" %>
+                    <% unless current_user.student? %>
+                      <%= link_to 'Edit', edit_assignment_path(assignment), class: "btn btn-primary", style: "margin-left:5px" %>
+                      <%= button_to assignment_path(assignment), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-primary", form: { style: 'display:inline;margin-left:5px' } do %>
+                        Delete
+                      <% end %>
+                    <% end %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>

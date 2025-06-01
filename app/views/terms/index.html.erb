@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+      <div class="header">
+        <%= render 'layouts/navbar' %>
+      </div>  
+      <div class="info">
+        <% unless current_user.student? %>
+          <div style="text-align: right; margin-top: 35px; margin-bottom: 20px; margin-right: 30px;">
+            <%= link_to 'New Term', new_term_path, class:"btn btn-primary" %>
+          </div>
+        <% end %>
+        <div class="well">
+          <table class="table">
+            <h3 class="fw-bold" style="margin-left: 10px;">Terms</h3>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @terms.each do |term| %>
+              <tr>
+                <td><%= term.id %></td>
+                <td><%= term.name %></td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <%= link_to 'View', term_path(term), class:"btn btn-primary" %>
+                    <%= link_to 'Edit', edit_term_path(term), class:"btn btn-primary", style:"margin-left:5px"%>
+                    <%= button_to term_path(term), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-primary", form: { style: 'display:inline;margin-left:5px' } do %>
+                        Delete
+                      <% end %>
+                  </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>

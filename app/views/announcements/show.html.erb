@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+    <div class="header">
+      <%= render 'layouts/navbar' %>
+    </div>  
+    <div class="info">
+      <div class="well">
+        <table class="table">
+          <h3 class="fw-bold" style="margin-left: 10px;">Announcement</h3>
+          <tbody>
+            <tr>
+              <td>ID: <%= @announcement.id %></td>
+            </tr>
+            <tr>
+              <td>Title: <%= @announcement.title %></td>
+            </tr>
+            <tr>
+              <td>Content: <%= @announcement.content %></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="btn-group" role="group">
+                <span><%= link_to "Back", :back, class:"btn btn-primary" %></span>
+                <% if current_user.admin? %>
+                  <span><%= link_to 'Edit', edit_announcement_path(@announcement), class:"btn btn-primary", style:"margin-left:5px" %></span>
+                    <%= button_to announcement_path(@announcement), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-primary", form: { style: 'display:inline;margin-left:5px' } do %>
+                      Delete
+                    <% end %>
+                  </span>
+                <% end %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

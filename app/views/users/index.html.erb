@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+      <div class="header">
+        <%= render 'layouts/navbar' %>
+      </div>  
+      <div class="info">
+        <div class="well">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+                <td>
+                  <div class="btn-group" role="group">
+                  <%= link_to 'View', user_path(user), class:"btn btn-primary" %>
+                   <%= button_to user_path(user), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-primary", form: { style: 'display:inline;margin-left:5px' } do %>
+                      Delete
+                    <% end %>
+                 </div>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>s

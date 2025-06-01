@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+      <div class="header">
+        <%= render 'layouts/navbar' %>
+      </div>  
+      <div class="info">
+        <div class="well">
+          <table class="table">
+            <h3>New Course</h3>
+            <tbody>
+              <%= form_with model: @course, local: true do |f| %>
+                <tr>
+                  <td class="pe-3"><%= f.label :title %></td>
+                  <td><%= f.text_field :title, class: "form-control w-50", style:"width:30%;" %></td>
+                </tr>
+                <tr>
+                  <td class="pe-3"><%= f.label :status %></td>
+                  <td><%= f.select :status, Course.statuses.keys.map { |k| [k.titleize, k] }, {}, class: "form-control w-50", style:"width:30%;background-color: white; color: black;" %></td>
+                </tr>
+                <tr>
+                  <td class="pe-3"><%= f.label :term %></td>
+                  <td><%= f.select :term_id, @terms, {}, class: "form-control w-50", style:"width:30%;background-color: white; color: black;" %></td>
+                </tr>
+                <tr>
+                  <td class="pe-3"><%= f.label :image %></td>
+                  <td><%= f.file_field :image, class: "form-control w-50", style:"width:30%;" %></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <%= link_to "Back", :back, class: "btn btn-primary" %>
+                    <%= f.submit 'Create Course', class:"btn btn-primary" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>

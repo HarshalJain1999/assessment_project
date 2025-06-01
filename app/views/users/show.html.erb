@@ -1,0 +1,41 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+      <div class="header">
+        <%= render 'layouts/navbar' %>
+      </div>  
+      <div class="info">
+        <div class="well">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>ID: <%= @user.id %></td>
+	            </tr>
+	            <tr>
+	              <td>Name: <%= @user.name %></td>
+	             <tr>
+	              <td>Email: <%= @user.email %></td>
+	            </tr>
+	            <tr>
+	              <td>Role: <%= @user.role %></td>
+	            </tr>
+              <tr>
+              <td>
+                <div class="btn-group" role="group">
+                <span><%= link_to "Back", :back, class:"btn btn-primary" %></span>
+                <% if current_user.admin? %>
+                  <span>
+                    <%= button_to user_path(@user), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-primary", form: { style: 'display:inline;margin-left:5px' } do %>
+                      Delete
+                    <% end %>
+                  </span>
+                <% end %>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <%= render 'layouts/sidenavbar' %>
+  <div class="main_content">
+    <div class="header">
+      <%= render 'layouts/navbar' %>
+    </div>  
+    <div class="info">
+      <div class="well">
+        <table class="table">
+          <h3 class="fw-bold" style="margin-left: 10px;">Term</h3>
+          <tbody>
+            <tr>
+              <td>Term: <%= @term.name %></td>
+            </tr>
+            <tr>
+              <td>
+                <span><%= link_to "Back", :back, class:"btn btn-primary" %></span>
+                <span><%= link_to 'Edit', edit_term_path(@term), class:"btn btn-primary" %></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
