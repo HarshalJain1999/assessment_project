@@ -44,7 +44,7 @@ gem "thruster", require: false
 gem 'devise'
 
 # Use for caching, session management, and background jobs
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.4'
 
 # Use for enables real-time WebSocket communication
 gem 'actioncable'
