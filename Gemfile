@@ -50,7 +50,7 @@ gem 'redis', '~> 4.0'
 gem 'actioncable'
 
 # Use for responsive design and UI components
-gem 'bootstrap', '~> 5.0'
+gem 'bootstrap', '~> 5.3'
 
 # Use for managing JavaScript and asset compilation
 gem 'propshaft'
